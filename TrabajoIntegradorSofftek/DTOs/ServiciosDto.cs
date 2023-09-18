@@ -1,6 +1,6 @@
 ﻿namespace TrabajoIntegradorSofftek.DTOs
 {
-    public class Class
+    public class ServiciosDto
     {
     }
 }
