@@ -3,12 +3,14 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using Serilog;
 using System.Reflection;
 using System.Security.Claims;
 using System.Text;
 using TrabajoIntegradorSofftek.DataAccess;
 using TrabajoIntegradorSofftek.Services.Implementacion;
 using TrabajoIntegradorSofftek.Services.Interfaces;
+using Microsoft.Extensions.Logging;
 
 namespace TrabajoIntegradorSofftek
 {
@@ -72,8 +74,21 @@ namespace TrabajoIntegradorSofftek
 
 				});
 
-			//Conexion a la base de datos
-			builder.Services.AddDbContext<AppDbContext>(options =>
+            Log.Logger = new LoggerConfiguration()
+							.MinimumLevel.Information()
+							.Enrich.FromLogContext()
+							.WriteTo.Console()
+                            .WriteTo.Seq("https://localhost:7193")
+                            .WriteTo.File("log.txt", rollingInterval: RollingInterval.Day)
+							.CreateLogger();
+
+            builder.Services.AddLogging(loggingBuilder =>
+            {
+                loggingBuilder.AddSerilog();
+            });
+
+            //Conexion a la base de datos
+            builder.Services.AddDbContext<AppDbContext>(options =>
 			{
 				options.UseSqlServer("name=DefaultConnection");
 			});
@@ -85,10 +100,10 @@ namespace TrabajoIntegradorSofftek
 				{
 					policy.RequireClaim(ClaimTypes.Role, "1");
 				});
-				option.AddPolicy("AdministradorConsultor", policy =>
+				option.AddPolicy("Consultor", policy =>
 
 				{
-					policy.RequireClaim(ClaimTypes.Role, "1","2");
+					policy.RequireClaim(ClaimTypes.Role, "2");
 
 				});
 			});

@@ -79,6 +79,30 @@ namespace TrabajoIntegradorSofftek.Migrations
                             Direccion = "Av. Pedro Goyena 643",
                             Estado = 3,
                             Nombre = "GasCom Connect"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Activo = true,
+                            Direccion = "Calle del Sol 123",
+                            Estado = 2,
+                            Nombre = "EcoGarden"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Activo = true,
+                            Direccion = "Avenida Tecnológica 789",
+                            Estado = 1,
+                            Nombre = "GasSolutions"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Activo = true,
+                            Direccion = "Calle de la Salud 456",
+                            Estado = 4,
+                            Nombre = "HealthTrack"
                         });
                 });
 
@@ -166,6 +190,27 @@ namespace TrabajoIntegradorSofftek.Migrations
                             Descripcion = "Mantenimiento de Redes y Tuberias",
                             Estado = true,
                             ValorHora = 230.0
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Descripcion = "Servicio de Seguimiento",
+                            Estado = true,
+                            ValorHora = 300.0
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Descripcion = "Consultoría en Seguridad",
+                            Estado = true,
+                            ValorHora = 200.0
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Descripcion = "Servicio de Reparación",
+                            Estado = true,
+                            ValorHora = 180.0
                         });
                 });
 
@@ -223,7 +268,7 @@ namespace TrabajoIntegradorSofftek.Migrations
                             CodProyecto = 1,
                             CodServicio = 1,
                             Costo = 120900.0,
-                            Fecha = new DateTime(2023, 9, 30, 18, 1, 30, 523, DateTimeKind.Local).AddTicks(7982),
+                            Fecha = new DateTime(2023, 10, 31, 13, 45, 11, 613, DateTimeKind.Local).AddTicks(5321),
                             ValorHora = 300.0
                         },
                         new
@@ -234,19 +279,63 @@ namespace TrabajoIntegradorSofftek.Migrations
                             CodProyecto = 2,
                             CodServicio = 3,
                             Costo = 61250.0,
-                            Fecha = new DateTime(2023, 9, 30, 18, 1, 30, 523, DateTimeKind.Local).AddTicks(7992),
+                            Fecha = new DateTime(2023, 10, 31, 13, 45, 11, 613, DateTimeKind.Local).AddTicks(5330),
                             ValorHora = 250.0
                         },
                         new
                         {
                             Id = 3,
                             Activo = true,
-                            CantHoras = 123,
+                            CantHoras = 180,
                             CodProyecto = 3,
+                            CodServicio = 4,
+                            Costo = 54000.0,
+                            Fecha = new DateTime(2023, 10, 31, 13, 45, 11, 613, DateTimeKind.Local).AddTicks(5331),
+                            ValorHora = 300.0
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Activo = true,
+                            CantHoras = 123,
+                            CodProyecto = 4,
                             CodServicio = 2,
                             Costo = 43050.0,
-                            Fecha = new DateTime(2023, 9, 30, 18, 1, 30, 523, DateTimeKind.Local).AddTicks(7993),
+                            Fecha = new DateTime(2023, 10, 31, 13, 45, 11, 613, DateTimeKind.Local).AddTicks(5332),
                             ValorHora = 350.0
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Activo = true,
+                            CantHoras = 150,
+                            CodProyecto = 5,
+                            CodServicio = 2,
+                            Costo = 52500.0,
+                            Fecha = new DateTime(2023, 10, 31, 13, 45, 11, 613, DateTimeKind.Local).AddTicks(5332),
+                            ValorHora = 350.0
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Activo = true,
+                            CantHoras = 200,
+                            CodProyecto = 6,
+                            CodServicio = 2,
+                            Costo = 40000.0,
+                            Fecha = new DateTime(2023, 10, 31, 13, 45, 11, 613, DateTimeKind.Local).AddTicks(5333),
+                            ValorHora = 200.0
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Activo = true,
+                            CantHoras = 220,
+                            CodProyecto = 3,
+                            CodServicio = 4,
+                            Costo = 39600.0,
+                            Fecha = new DateTime(2023, 10, 31, 13, 45, 11, 613, DateTimeKind.Local).AddTicks(5334),
+                            ValorHora = 180.0
                         });
                 });
 
@@ -263,6 +352,12 @@ namespace TrabajoIntegradorSofftek.Migrations
                         .HasColumnType("bit")
                         .HasColumnName("Activo");
 
+                    b.Property<string>("Apellido")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)")
+                        .HasColumnName("Apellido");
+
                     b.Property<string>("Clave")
                         .IsRequired()
                         .HasMaxLength(250)
@@ -276,6 +371,10 @@ namespace TrabajoIntegradorSofftek.Migrations
                     b.Property<int>("Dni")
                         .HasColumnType("int")
                         .HasColumnName("Dni");
+
+                    b.Property<int>("Edad")
+                        .HasColumnType("int")
+                        .HasColumnName("Edad");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -300,31 +399,73 @@ namespace TrabajoIntegradorSofftek.Migrations
                         {
                             Id = 1,
                             Activo = true,
-                            Clave = "3a492565a7a8d02b0ee918b1daf702398560373ae11aca792d34dbc5236f9219",
+                            Apellido = "Coria",
+                            Clave = "2191227b07660b208a127900f141134edcef520b5f2076f2c08884822e6cd610",
                             CodRol = 1,
                             Dni = 43456342,
+                            Edad = 23,
                             Email = "mariocoria@gmail.com",
-                            Nombre = "Mario Coria"
+                            Nombre = "Mario"
                         },
                         new
                         {
                             Id = 2,
                             Activo = true,
-                            Clave = "a255a14262a960ecd991e2b92ffb31b259fe26bf510c317d1ecc27629d303c26",
+                            Apellido = "Gonzales",
+                            Clave = "04e9ebfffd0597ff2a5bba0f510a2a8ba75be7863eeca58dca33463fb61eaa0d",
                             CodRol = 2,
                             Dni = 12345678,
+                            Edad = 32,
                             Email = "marcogonzales@gmail.com",
-                            Nombre = "Marco Gonzales"
+                            Nombre = "Marco"
                         },
                         new
                         {
                             Id = 3,
                             Activo = true,
-                            Clave = "63399e2a0393204bf9ca560db115ab1c95b42d9a92f8f7aaa3ca29abcdfa5fc0",
+                            Apellido = "Abriola",
+                            Clave = "f2bb40e4308e58987c6991d243c3be39edd1da1ca0047f13fb04603feb750a80",
                             CodRol = 1,
                             Dni = 87654321,
+                            Edad = 22,
                             Email = "marcoabriola@gmail.com",
-                            Nombre = "Marco Abriola"
+                            Nombre = "Marco"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Activo = true,
+                            Apellido = "Correa",
+                            Clave = "5a632a97daad8e256792ac64fae021b5b1b1cfc6ca2d042cd7a8b9246342159a",
+                            CodRol = 2,
+                            Dni = 26385623,
+                            Edad = 32,
+                            Email = "mariacorrea@gmail.com",
+                            Nombre = "Maria"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Activo = true,
+                            Apellido = "Corbalan",
+                            Clave = "aacb9ff49f127c203a95b4cab90572356dd034b7080702b4b078b9a926d30e5f",
+                            CodRol = 1,
+                            Dni = 92857463,
+                            Edad = 32,
+                            Email = "fernandocorbalan@gmail.com",
+                            Nombre = "Fernando"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Activo = true,
+                            Apellido = "Duran",
+                            Clave = "9fd21154cf0f5affb40b1243de465b4127cd4b3379079ee9c7672bb5920ad117",
+                            CodRol = 2,
+                            Dni = 25463548,
+                            Edad = 26,
+                            Email = "brianduran@gmail.com",
+                            Nombre = "Brian"
                         });
                 });
 

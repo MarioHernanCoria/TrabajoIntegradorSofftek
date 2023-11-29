@@ -50,9 +50,5 @@ namespace TrabajoIntegradorSofftek.Entities
 		[Column("Activo")]
 		public bool Activo { get; set; }
 
-		internal bool Any()
-		{
-			throw new NotImplementedException();
-		}
 	}
 }

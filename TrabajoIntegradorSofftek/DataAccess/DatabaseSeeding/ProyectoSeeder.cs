@@ -32,7 +32,33 @@ namespace TrabajoIntegradorSofftek.DataAccess.DatabaseSeeding
 						Direccion = "Av. Pedro Goyena 643",
 						Estado = 3,
 						Activo = true
-					});
+					},
+                    new Proyecto
+					{
+						Id = 4,
+						Nombre = "EcoGarden",
+						Direccion = "Calle del Sol 123",
+						Estado = 2,
+						Activo = true
+					},
+					new Proyecto
+					{
+						Id = 5,
+						Nombre = "GasSolutions",
+						Direccion = "Avenida Tecnológica 789",
+						Estado = 1,
+						Activo = true
+					},
+
+                    new Proyecto
+                    {
+                        Id = 6,
+                        Nombre = "HealthTrack",
+                        Direccion = "Calle de la Salud 456",
+                        Estado = 4,
+                        Activo = true
+
+                    });
 		}
 	}
 }

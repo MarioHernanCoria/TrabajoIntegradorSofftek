@@ -16,7 +16,8 @@ namespace TrabajoIntegradorSofftek.DataAccess
 		public DbSet<Rol> Roles { get; set; }
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
-			var seeders = new List<IEntitySeeder>
+
+            var seeders = new List<IEntitySeeder>
 			{
 				new UsuarioSeeder(),
 				new ProyectoSeeder(),

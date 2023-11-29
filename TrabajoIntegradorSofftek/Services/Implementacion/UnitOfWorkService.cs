@@ -16,6 +16,7 @@ namespace TrabajoIntegradorSofftek.Services.Implementacion
 		public UnitOfWorkService(AppDbContext context)
 		{
 			_context = context;
+
 			UsuarioRepository = new UsuarioRepository(_context);
 			ProyectoRepository = new ProyectoRepository(_context);
 			ServicioRepository = new ServicioRepository(_context);

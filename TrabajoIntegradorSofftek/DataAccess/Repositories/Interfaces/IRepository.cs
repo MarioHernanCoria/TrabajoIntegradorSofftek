@@ -6,6 +6,6 @@
 		public Task<T> GetById(int id);
 		public Task<bool> Update(T Entity);
 		public Task<bool> Delete(int id);
-
-	}
+        Task<bool> GetByEmail(string email);
+    }
 }

@@ -1,9 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TrabajoIntegradorSofftek.DataAccess.Repositories.Interfaces;
+using TrabajoIntegradorSofftek.Entities;
 
 namespace TrabajoIntegradorSofftek.DataAccess.Repositories
 {
-	public class Repository<T> : IRepository<T> where T : class
+    public class Repository<T> : IRepository<T> where T : class
 	{
 		protected readonly AppDbContext _context;
 
@@ -29,21 +30,30 @@ namespace TrabajoIntegradorSofftek.DataAccess.Repositories
 			return true;
 		}
 
-		public virtual Task<bool> Update(T Entity)
+		public virtual async Task<bool> Update(T entity)
 		{
-			throw new NotImplementedException();
-		}
+            _context.Set<T>().Update(entity);
+            await _context.SaveChangesAsync();
+            return true;
+        }
 
-		public virtual Task<bool> Delete(int id)
-		{
-			throw new NotImplementedException();
-		}
+        public virtual async Task<bool> Delete(int id)
+        {
+            var entity = await _context.Set<T>().FindAsync(id);
+            if (entity != null)
+            {
+                _context.Set<T>().Remove(entity);
+                await _context.SaveChangesAsync();
+                return true;
+            }
+            return false;
+        }
 
-		public virtual Task<bool> GetByEmail(string email)
-		{
-			throw new NotImplementedException();
-		}
+        public virtual Task<bool> GetByEmail(string email)
+        {
+            throw new NotImplementedException();
+        }
 
 
-	}
+    }
 }

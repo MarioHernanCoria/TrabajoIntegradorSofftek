@@ -1,0 +1,68 @@
+2023-11-29 16:40:44.281 -03:00 [INF] User profile is available. Using 'C:\Users\Mario\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2023-11-29 16:40:44.505 -03:00 [INF] Now listening on: https://localhost:7212
+2023-11-29 16:40:44.507 -03:00 [INF] Now listening on: http://localhost:5015
+2023-11-29 16:40:44.513 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-11-29 16:40:44.516 -03:00 [INF] Hosting environment: Development
+2023-11-29 16:40:44.518 -03:00 [INF] Content root path: C:\Users\Mario\Desktop\ACADEMIA Softtek\TPIntegradorSofftek\TrabajoIntegradorSofftek\TrabajoIntegradorSofftek\
+2023-11-29 16:40:44.963 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7212/swagger/index.html - -
+2023-11-29 16:40:45.173 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7212/swagger/index.html - - - 200 - text/html;charset=utf-8 212.0619ms
+2023-11-29 16:40:45.181 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7212/_framework/aspnetcore-browser-refresh.js - -
+2023-11-29 16:40:45.181 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7212/_vs/browserLink - -
+2023-11-29 16:40:45.185 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7212/_framework/aspnetcore-browser-refresh.js - - - 200 12380 application/javascript;+charset=utf-8 4.2853ms
+2023-11-29 16:40:45.194 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7212/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 13.4226ms
+2023-11-29 16:40:45.236 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7212/swagger/v1/swagger.json - -
+2023-11-29 16:40:45.336 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7212/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 100.0392ms
+2023-11-29 16:40:56.044 -03:00 [INF] Request starting HTTP/2 POST https://localhost:7212/api/Login application/json 56
+2023-11-29 16:40:56.094 -03:00 [INF] CORS policy execution successful.
+2023-11-29 16:40:56.098 -03:00 [INF] Executing endpoint 'TrabajoIntegradorSofftek.Controllers.LoginController.Login (TrabajoIntegradorSofftek)'
+2023-11-29 16:40:56.118 -03:00 [INF] Route matched with {action = "Login", controller = "Login"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(TrabajoIntegradorSofftek.DTOs.AuthenticateDto) on controller TrabajoIntegradorSofftek.Controllers.LoginController (TrabajoIntegradorSofftek).
+2023-11-29 16:40:56.857 -03:00 [INF] Entity Framework Core 6.0.22 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.22' with options: None
+2023-11-29 16:40:57.521 -03:00 [INF] Executed DbCommand (64ms) [Parameters=[@__dto_Email_0='?' (Size = 100), @__EncryptPassword_1='?' (Size = 250)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [u].[CodUsuario], [u].[Activo], [u].[Apellido], [u].[Clave], [u].[CodRol], [u].[Dni], [u].[Edad], [u].[Email], [u].[Nombre], [r].[CodRol], [r].[Activo], [r].[Descripcion]
+FROM [Usuarios] AS [u]
+INNER JOIN [Roles] AS [r] ON [u].[CodRol] = [r].[CodRol]
+WHERE ([u].[Email] = @__dto_Email_0) AND ([u].[Clave] = @__EncryptPassword_1)
+2023-11-29 16:40:57.696 -03:00 [INF] Inicio de sesión exitoso para el usuario: mariocoria@gmail.com
+2023-11-29 16:40:57.703 -03:00 [INF] Executing OkObjectResult, writing value of type 'TrabajoIntegradorSofftek.DTOs.UsuarioLoginDto'.
+2023-11-29 16:40:57.711 -03:00 [INF] Executed action TrabajoIntegradorSofftek.Controllers.LoginController.Login (TrabajoIntegradorSofftek) in 1586.9381ms
+2023-11-29 16:40:57.713 -03:00 [INF] Executed endpoint 'TrabajoIntegradorSofftek.Controllers.LoginController.Login (TrabajoIntegradorSofftek)'
+2023-11-29 16:40:57.720 -03:00 [INF] Request finished HTTP/2 POST https://localhost:7212/api/Login application/json 56 - 200 - application/json;+charset=utf-8 1676.6311ms
+2023-11-29 16:41:16.637 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7212/api/Usuario - -
+2023-11-29 16:41:16.698 -03:00 [INF] Executing endpoint 'TrabajoIntegradorSofftek.Controllers.UsuarioController.GetAll (TrabajoIntegradorSofftek)'
+2023-11-29 16:41:16.701 -03:00 [INF] Route matched with {action = "GetAll", controller = "Usuario"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller TrabajoIntegradorSofftek.Controllers.UsuarioController (TrabajoIntegradorSofftek).
+2023-11-29 16:41:16.714 -03:00 [INF] Entity Framework Core 6.0.22 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.22' with options: None
+2023-11-29 16:41:16.734 -03:00 [INF] Executed DbCommand (12ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[CodUsuario], [u].[Activo], [u].[Apellido], [u].[Clave], [u].[CodRol], [u].[Dni], [u].[Edad], [u].[Email], [u].[Nombre]
+FROM [Usuarios] AS [u]
+2023-11-29 16:41:16.739 -03:00 [INF] Se obtuvieron todos los usuarios correctamente.
+2023-11-29 16:41:16.740 -03:00 [INF] Executing ObjectResult, writing value of type 'TrabajoIntegradorSofftek.Infrastructure.ApiSuccessResponse'.
+2023-11-29 16:41:16.744 -03:00 [INF] Executed action TrabajoIntegradorSofftek.Controllers.UsuarioController.GetAll (TrabajoIntegradorSofftek) in 40.2168ms
+2023-11-29 16:41:16.745 -03:00 [INF] Executed endpoint 'TrabajoIntegradorSofftek.Controllers.UsuarioController.GetAll (TrabajoIntegradorSofftek)'
+2023-11-29 16:41:16.746 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7212/api/Usuario - - - 200 - application/json;+charset=utf-8 109.2417ms
+2023-11-29 16:41:23.116 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7212/api/Usuario/1 - -
+2023-11-29 16:41:23.119 -03:00 [INF] Executing endpoint 'TrabajoIntegradorSofftek.Controllers.UsuarioController.GetById (TrabajoIntegradorSofftek)'
+2023-11-29 16:41:23.122 -03:00 [INF] Route matched with {action = "GetById", controller = "Usuario"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetById(Int32) on controller TrabajoIntegradorSofftek.Controllers.UsuarioController (TrabajoIntegradorSofftek).
+2023-11-29 16:41:23.156 -03:00 [INF] Entity Framework Core 6.0.22 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.22' with options: None
+2023-11-29 16:41:23.170 -03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[CodUsuario], [u].[Activo], [u].[Apellido], [u].[Clave], [u].[CodRol], [u].[Dni], [u].[Edad], [u].[Email], [u].[Nombre]
+FROM [Usuarios] AS [u]
+WHERE [u].[CodUsuario] = @__p_0
+2023-11-29 16:41:23.196 -03:00 [INF] Se encontro el Usuario
+2023-11-29 16:41:23.198 -03:00 [INF] Executing ObjectResult, writing value of type 'TrabajoIntegradorSofftek.Infrastructure.ApiSuccessResponse'.
+2023-11-29 16:41:23.200 -03:00 [INF] Executed action TrabajoIntegradorSofftek.Controllers.UsuarioController.GetById (TrabajoIntegradorSofftek) in 76.801ms
+2023-11-29 16:41:23.202 -03:00 [INF] Executed endpoint 'TrabajoIntegradorSofftek.Controllers.UsuarioController.GetById (TrabajoIntegradorSofftek)'
+2023-11-29 16:41:23.203 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7212/api/Usuario/1 - - - 200 - application/json;+charset=utf-8 86.7972ms
+2023-11-29 16:41:27.974 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7212/api/Usuario/45 - -
+2023-11-29 16:41:27.977 -03:00 [INF] Executing endpoint 'TrabajoIntegradorSofftek.Controllers.UsuarioController.GetById (TrabajoIntegradorSofftek)'
+2023-11-29 16:41:27.978 -03:00 [INF] Route matched with {action = "GetById", controller = "Usuario"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetById(Int32) on controller TrabajoIntegradorSofftek.Controllers.UsuarioController (TrabajoIntegradorSofftek).
+2023-11-29 16:41:27.984 -03:00 [INF] Entity Framework Core 6.0.22 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.22' with options: None
+2023-11-29 16:41:27.990 -03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[CodUsuario], [u].[Activo], [u].[Apellido], [u].[Clave], [u].[CodRol], [u].[Dni], [u].[Edad], [u].[Email], [u].[Nombre]
+FROM [Usuarios] AS [u]
+WHERE [u].[CodUsuario] = @__p_0
+2023-11-29 16:41:27.993 -03:00 [INF] No se encontró ningún usuario con el ID 45
+2023-11-29 16:41:27.994 -03:00 [INF] Se encontro el Usuario
+2023-11-29 16:41:27.995 -03:00 [INF] Executing ObjectResult, writing value of type 'TrabajoIntegradorSofftek.Infrastructure.ApiSuccessResponse'.
+2023-11-29 16:41:27.996 -03:00 [INF] Executed action TrabajoIntegradorSofftek.Controllers.UsuarioController.GetById (TrabajoIntegradorSofftek) in 14.7859ms
+2023-11-29 16:41:27.996 -03:00 [INF] Executed endpoint 'TrabajoIntegradorSofftek.Controllers.UsuarioController.GetById (TrabajoIntegradorSofftek)'
+2023-11-29 16:41:27.997 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7212/api/Usuario/45 - - - 200 - application/json;+charset=utf-8 23.0974ms
