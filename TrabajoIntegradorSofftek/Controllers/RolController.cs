@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Mvc;
 using TrabajoIntegradorSofftek.DTOs;
 using TrabajoIntegradorSofftek.Entities;
 using TrabajoIntegradorSofftek.Infrastructure;
-using TrabajoIntegradorSofftek.Migrations;
 using TrabajoIntegradorSofftek.Services.Interfaces;
 
 namespace TrabajoIntegradorSofftek.Controllers

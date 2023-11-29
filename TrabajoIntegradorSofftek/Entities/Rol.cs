@@ -1,7 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using TrabajoIntegradorSofftek.DTOs;
-using TrabajoIntegradorSofftek.Migrations;
 
 namespace TrabajoIntegradorSofftek.Entities
 {

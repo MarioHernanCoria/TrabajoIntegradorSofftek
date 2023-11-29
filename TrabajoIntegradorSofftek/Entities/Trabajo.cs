@@ -1,7 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using TrabajoIntegradorSofftek.DTOs;
-using TrabajoIntegradorSofftek.Migrations;
 
 namespace TrabajoIntegradorSofftek.Entities
 {
@@ -43,9 +42,8 @@ namespace TrabajoIntegradorSofftek.Entities
 		[Column("Fecha")]
 		public DateTime Fecha { get; set; }
 
-		[Required]
-		[Column("CodProyecto")]
-		public int CodProyecto { get; set; }
+        [Column("CodProyecto")]
+        public int CodProyecto { get; set; }
 
 		[Required]
 		[Column("CodServicio")]

@@ -44,23 +44,21 @@ namespace TrabajoIntegradorSofftek.DataAccess.Repositories
 			return await _context.Usuarios.Include(x => x.Roles).SingleOrDefaultAsync(x => x.Email == dto.Email && x.Clave == PasswordEncryptHelper.EncryptPassword(dto.Clave, dto.Email));
 		}
 
-		public async Task<bool> UsuarioEx(string Email)
-		{
-			return await _context.Usuarios.AnyAsync(x => x.Email == Email);
-		}
+        public async Task<bool> UsuarioEx(string Email)
+        {
+            return await _context.Usuarios.AnyAsync(x => x.Email == Email);
+        }
 
+        public override async Task<bool> GetByEmail(string email)
+        {
+            var usuario = await _context.Usuarios.Where(x => x.Email == email).FirstOrDefaultAsync();
+            if (usuario != null)
+            {
+                return true;
+            }
 
-		public override async Task<bool> GetByEmail(string email)
-		{
-			var usuario = await _context.Usuarios.Where(x => x.Email == email).FirstOrDefaultAsync();
-			if (usuario != null)
-			{
-				return true;
-			}
+            return false;
 
-			return false;
-
-		}
-		
-	}
+        }
+    }
 }

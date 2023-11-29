@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Serilog;
 using TrabajoIntegradorSofftek.DTOs;
 using TrabajoIntegradorSofftek.Entities;
 using TrabajoIntegradorSofftek.Helpers;
@@ -16,8 +17,10 @@ namespace TrabajoIntegradorSofftek.Controllers
     public class UsuarioController : ControllerBase
     {
         private readonly IUnitOfWork _unitOfWork;
-        public UsuarioController(IUnitOfWork unitOfWork) 
+		private readonly ILogger<UsuarioController> _logger;
+        public UsuarioController(IUnitOfWork unitOfWork, ILogger<UsuarioController> logger) 
         {
+			_logger = logger;
             _unitOfWork = unitOfWork;
         }
 
@@ -29,17 +32,27 @@ namespace TrabajoIntegradorSofftek.Controllers
 
 		
 		[HttpGet]
-		public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAll()
         {
-            var Usuarios = await _unitOfWork.UsuarioRepository.GetAll();
-			int pageToShow = 1;
+			try
+			{
+				var Usuarios = await _unitOfWork.UsuarioRepository.GetAll();
+				int pageToShow = 1;
 
-			if (Request.Query.ContainsKey("page")) int.TryParse(Request.Query["page"], out pageToShow);
+				if (Request.Query.ContainsKey("page")) int.TryParse(Request.Query["page"], out pageToShow);
 
-			var url = new Uri($"{Request.Scheme}://{Request.Host}{Request.Path}").ToString();
-			var paginateUsuarios = PaginateHelper.Paginate(Usuarios, pageToShow, url);
+				var url = new Uri($"{Request.Scheme}://{Request.Host}{Request.Path}").ToString();
+				var paginateUsuarios = PaginateHelper.Paginate(Usuarios, pageToShow, url);
 
-			return ResponseFactory.CreateSuccessResponse(200, paginateUsuarios);
+                _logger.LogInformation("Se obtuvieron todos los usuarios correctamente.");
+
+                return ResponseFactory.CreateSuccessResponse(200, paginateUsuarios);
+			}
+			catch (Exception ex) 
+			{
+                _logger.LogError(ex, "Ocurrió un error al obtener los usuarios.");
+                return ResponseFactory.CreateErrorResponse(500, "Ocurrió un error interno.");
+            }
 		}
 
 		/// <summary>
@@ -52,14 +65,26 @@ namespace TrabajoIntegradorSofftek.Controllers
 		[HttpGet("{id}")]
 		public async Task<IActionResult> GetById([FromRoute] int id)
 		{
-			var Usuario = await _unitOfWork.UsuarioRepository.GetById(id);
-			if (Usuario == null)
+			try
 			{
-				return ResponseFactory.CreateErrorResponse(404, "No se encontro ningun usuario con ese id ");
+				var Usuario = await _unitOfWork.UsuarioRepository.GetById(id);
+				if (Usuario == null)
+				{
+                    Log.Information("No se encontró ningún usuario con el ID {UserId}", id);
+                    
+                }
+				await _unitOfWork.Complete();
+
+				Log.Information("Se encontro el Usuario");
+				return ResponseFactory.CreateSuccessResponse(200, Usuario);
 			}
-			await _unitOfWork.Complete();
-			return ResponseFactory.CreateSuccessResponse(200, Usuario);
-		}
+			catch (Exception ex)
+			{
+                Log.Error(ex, "Ocurrió un error al obtener el usuario con ID {UserId}.", id);
+                return ResponseFactory.CreateErrorResponse(500, "Ocurrió un error interno.");
+            }
+
+        }
 
 
 
@@ -89,7 +114,7 @@ namespace TrabajoIntegradorSofftek.Controllers
 		/// <returns>retorna un Usuario actualizado o un statusCode 201</returns>
 
 
-		[Authorize(Policy = "Administrador")]
+		//[Authorize(Policy = "Administrador")]
 		[HttpPut("{id}")]
 		public async Task<IActionResult> Usuario([FromRoute] int id, UsuarioDto dto)
 		{

@@ -10,6 +10,8 @@ namespace TrabajoIntegradorSofftek.Entities
         public Usuario(UsuarioDto dto)
         {
 			Nombre = dto.Nombre;
+			Apellido = dto.Apellido;
+			Edad = dto.Edad;
 			Dni = dto.Dni;
 			Email = dto.Email;
 			Clave = PasswordEncryptHelper.EncryptPassword(dto.Clave, dto.Email);
@@ -22,6 +24,8 @@ namespace TrabajoIntegradorSofftek.Entities
 		{
 			Id = id;
 			Nombre = dto.Nombre;
+			Apellido = dto.Apellido;
+			Edad = dto.Edad;
 			Dni = dto.Dni;
 			Email = dto.Email;
 			Clave = PasswordEncryptHelper.EncryptPassword(dto.Clave, dto.Email);
@@ -45,7 +49,16 @@ namespace TrabajoIntegradorSofftek.Entities
 		[Column("Nombre")]
 		public string Nombre { get; set; }
 
-		[Required]
+        [Required]
+        [MaxLength(50)]
+        [Column("Apellido")]
+        public string Apellido { get; set; }
+
+        [Required]
+        [Column("Edad")]
+        public int Edad { get; set; }	
+
+        [Required]
 		[Column("Dni")]
 		public int Dni {  get; set; }
 

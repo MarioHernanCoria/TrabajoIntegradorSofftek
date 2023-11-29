@@ -28,7 +28,28 @@ namespace TrabajoIntegradorSofftek.DataAccess.DatabaseSeeding
 						Descripcion = "Mantenimiento de Redes y Tuberias",
 						Estado = true,
 						ValorHora = 230,
-					});
+					},
+                    new Servicio
+					{
+						Id = 4,
+						Descripcion = "Servicio de Seguimiento",
+						Estado = true,
+						ValorHora = 300,
+					},
+                    new Servicio
+					{
+						Id = 5,
+						Descripcion = "Consultoría en Seguridad",
+						Estado = true,
+						ValorHora = 200,
+					},
+                    new Servicio
+                    {
+                        Id = 6,
+                        Descripcion = "Servicio de Reparación",
+                        Estado = true,
+                        ValorHora = 180,
+                    });
 		}
 	}
 }

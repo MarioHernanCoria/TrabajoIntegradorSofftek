@@ -36,13 +36,57 @@ namespace TrabajoIntegradorSofftek.DataAccess.DatabaseSeeding
 						Id = 3,
 						Fecha = DateTime.Now,
 						CodProyecto = 3,
-						CodServicio = 2,
-						CantHoras = 123,
-						ValorHora = 350,
-						Costo = 43050,
+						CodServicio = 4,
+						CantHoras = 180,
+						ValorHora = 300,
+						Costo = 54000,
 						Activo = true
+					},
+                    new Trabajo
+                    {
+                        Id = 4,
+                        Fecha = DateTime.Now,
+                        CodProyecto = 4,
+                        CodServicio = 2,
+                        CantHoras = 123,
+                        ValorHora = 350,
+                        Costo = 43050,
+                        Activo = true
+                    },
+                    new Trabajo
+                    {
+                        Id = 5,
+                        Fecha = DateTime.Now,
+                        CodProyecto = 5,
+                        CodServicio = 2,
+                        CantHoras = 150,
+                        ValorHora = 350,
+                        Costo = 52500,
+                        Activo = true
+                    },
+                    new Trabajo
+                    {
+                        Id = 6,
+                        Fecha = DateTime.Now,
+                        CodProyecto = 6,
+                        CodServicio = 2,
+                        CantHoras = 200,
+                        ValorHora = 200,
+                        Costo = 40000,
+                        Activo = true
+                    },
+                    new Trabajo
+                    {
+                        Id = 7,
+                        Fecha = DateTime.Now,
+                        CodProyecto = 3,
+                        CodServicio = 4,
+                        CantHoras = 220,
+                        ValorHora = 180,
+                        Costo = 39600,
+                        Activo = true
 
-					});
+                    });
 		}
 	}
 }
